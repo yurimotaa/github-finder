@@ -1,12 +1,28 @@
 import { useState } from "react";
 import Search from "../components/Search";
 import { TUser } from "../types/userTypes";
+import User from "../components/User";
+import Error from "../components/Error";
+import Loader from "../components/Loader";
 
 const Home = () => {
   const [user, setUser] = useState<TUser | null>(null);
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const loadUser = async (userName: string) => {
+    setIsLoading(true);
+    setUser(null);
+    setError(false);
+
     const response = await fetch(`https://api.github.com/users/${userName}`);
+
+    setIsLoading(false);
+
+    if (response.status === 404) {
+      setError(true);
+      return;
+    }
 
     const data = await response.json();
 
@@ -26,7 +42,9 @@ const Home = () => {
   return (
     <div>
       <Search loadUser={loadUser} />
-      {user && <p>{user.login}</p>}
+      {isLoading && <Loader />}
+      {user && <User {...user} />}
+      {error && <Error />}
     </div>
   );
 };

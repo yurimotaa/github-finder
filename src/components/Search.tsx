@@ -1,10 +1,16 @@
 import { BsSearch } from "react-icons/bs";
 import { TSearch } from "../types/userTypes";
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 import css from "./Search.module.css";
 
 const Search = ({ loadUser }: TSearch) => {
   const [userName, setUserName] = useState("");
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Enter") {
+      loadUser(userName);
+    }
+  };
   return (
     <div className={css.search}>
       <h2>Busque pelo nome do usuário:</h2>
@@ -14,6 +20,7 @@ const Search = ({ loadUser }: TSearch) => {
           type="text"
           placeholder="Digite o nome do usuário"
           onChange={(e) => setUserName(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <button onClick={() => loadUser(userName)}>
           <BsSearch />

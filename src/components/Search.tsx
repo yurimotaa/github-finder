@@ -1,5 +1,5 @@
 import { BsSearch } from "react-icons/bs";
-import { TSearch } from "../types/userTypes";
+import { TSearch } from "../types/allTypes";
 import { useState, KeyboardEvent } from "react";
 import css from "./Search.module.css";
 

@@ -1,4 +1,4 @@
-import { TUser } from "../types/userTypes";
+import { TUser } from "../types/allTypes";
 import { MdLocationPin } from "react-icons/md";
 import { Link } from "react-router-dom";
 import css from "./User.module.css";

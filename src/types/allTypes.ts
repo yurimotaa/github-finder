@@ -9,3 +9,11 @@ export type TUser = {
 export type TSearch = {
   loadUser: (userName: string) => Promise<void>;
 };
+
+export type TRepo = {
+  name: string;
+  html_url: string;
+  language: string;
+  stargazers_count: number;
+  forks_count: number;
+};

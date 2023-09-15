@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Search from "../components/Search";
-import { TUser } from "../types/userTypes";
+import { TUser } from "../types/allTypes";
 import User from "../components/User";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
